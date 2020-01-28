@@ -19,7 +19,7 @@ namespace DFC.Composite.Shell.Test.ServicesTests
         [Fact]
         public void ProcessReturnsEmptyStringIfNoContent()
         {
-            var result = contentProcessorService.Process(string.Empty, string.Empty, string.Empty);
+            var result = contentProcessorService.Process(string.Empty, string.Empty, string.Empty, string.Empty);
             Assert.True(string.IsNullOrWhiteSpace(result));
         }
 
@@ -29,12 +29,14 @@ namespace DFC.Composite.Shell.Test.ServicesTests
             const string someContent = "SomeContent";
             const string fakeBaseUrl = "FakeBaseUrl";
             const string fakeApplicationUrl = "FakeApplicationUrl";
+            const string fakeContentPath = "FakePath";
+
             var fakeUrlRewriterService = A.Fake<IUrlRewriterService>();
             var validContentProcessorService = new ContentProcessorService(fakeUrlRewriterService);
 
-            validContentProcessorService.Process(someContent, fakeBaseUrl, fakeApplicationUrl);
+            validContentProcessorService.Process(someContent, fakeBaseUrl, fakeApplicationUrl, fakeContentPath);
 
-            A.CallTo(() => fakeUrlRewriterService.Rewrite(someContent, fakeBaseUrl, fakeApplicationUrl)).MustHaveHappenedOnceExactly();
+            A.CallTo(() => fakeUrlRewriterService.Rewrite(someContent, fakeBaseUrl, fakeApplicationUrl, fakeContentPath)).MustHaveHappenedOnceExactly();
         }
     }
 }

@@ -11,9 +11,9 @@ namespace DFC.Composite.Shell.Services.ContentProcessor
             this.urlRewriterService = urlRewriterService;
         }
 
-        public string Process(string content, string requestBaseUrl, string applicationRootUrl)
+        public string Process(string content, string requestBaseUrl, string applicationRootUrl, string contentApplicationPath)
         {
-            return !string.IsNullOrWhiteSpace(content) ? urlRewriterService.Rewrite(content, requestBaseUrl, applicationRootUrl) : string.Empty;
+            return !string.IsNullOrWhiteSpace(content) ? urlRewriterService.Rewrite(content, requestBaseUrl, applicationRootUrl, contentApplicationPath) : string.Empty;
         }
     }
 }

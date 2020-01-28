@@ -87,9 +87,9 @@ namespace DFC.Composite.Shell.Test.ServicesTests
             A.CallTo(() => contentRetriever.GetContent($"{defaultBodyFooterRegion.RegionEndpoint}", defaultBodyFooterRegion, A<bool>.Ignored, RequestBaseUrl)).Returns(BodyFooterRegionContent);
             A.CallTo(() => contentRetriever.GetContent($"{defaultBodyFooterRegion.RegionEndpoint}/index", defaultBodyFooterRegion, A<bool>.Ignored, RequestBaseUrl)).Returns(BodyFooterRegionContent);
 
-            A.CallTo(() => contentProcessor.Process(HeadRegionContent, A<string>.Ignored, A<string>.Ignored)).Returns(HeadRegionContent);
-            A.CallTo(() => contentProcessor.Process(BodyRegionContent, A<string>.Ignored, A<string>.Ignored)).Returns(BodyRegionContent);
-            A.CallTo(() => contentProcessor.Process(BodyFooterRegionContent, A<string>.Ignored, A<string>.Ignored)).Returns(BodyFooterRegionContent);
+            A.CallTo(() => contentProcessor.Process(HeadRegionContent, A<string>.Ignored, A<string>.Ignored, A<string>.Ignored)).Returns(HeadRegionContent);
+            A.CallTo(() => contentProcessor.Process(BodyRegionContent, A<string>.Ignored, A<string>.Ignored, A<string>.Ignored)).Returns(BodyRegionContent);
+            A.CallTo(() => contentProcessor.Process(BodyFooterRegionContent, A<string>.Ignored, A<string>.Ignored, A<string>.Ignored)).Returns(BodyFooterRegionContent);
 
             defaultFormPostParams = new List<KeyValuePair<string, string>> { new KeyValuePair<string, string>("formParam1", "testvalue") };
 

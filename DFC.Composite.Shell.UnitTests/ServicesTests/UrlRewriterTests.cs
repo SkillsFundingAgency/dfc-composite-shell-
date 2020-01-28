@@ -17,11 +17,12 @@ namespace DFC.Composite.Shell.Test.ServicesTests
         {
             const string shellAppUrl = "ShellAppUrl";
             const string childAppUrl = "ChildApplicationRootUrl";
+            var contentPathName = "childApp1";
 
             var content = $"<a href='{childAppUrl}/edit/1'></a>";
             var processedContentExpected = $"<a href='{shellAppUrl}/edit/1'></a>";
 
-            var result = urlRewriterService.Rewrite(content, shellAppUrl, childAppUrl);
+            var result = urlRewriterService.Rewrite(content, shellAppUrl, childAppUrl, contentPathName);
 
             Assert.Equal(result, processedContentExpected);
         }

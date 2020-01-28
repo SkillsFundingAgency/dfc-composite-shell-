@@ -4,7 +4,7 @@ namespace DFC.Composite.Shell.Services.UrlRewriter
 {
     public class UrlRewriterService : IUrlRewriterService
     {
-        public string Rewrite(string content, string requestBaseUrl, string applicationRootUrl)
+        public string Rewrite(string content, string requestBaseUrl, string applicationRootUrl, string contentPathName)
         {
             var attributeNames = new string[] { "href", "action" };
             var quoteChars = new char[] { '"', '\'' };

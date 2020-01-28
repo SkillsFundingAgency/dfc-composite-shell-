@@ -180,7 +180,7 @@ namespace DFC.Composite.Shell.Services.Application
 
             var result = await this.contentRetriever.GetContent(url, regionModel, false, RequestBaseUrl).ConfigureAwait(false);
 
-            return contentProcessorService.Process(result, RequestBaseUrl, application.RootUrl);
+            return contentProcessorService.Process(result, RequestBaseUrl, application.RootUrl, regionModel.RegionEndpoint);
         }
 
         private Task<string> GetPostMarkUpAsync(ApplicationModel application, string article, IEnumerable<KeyValuePair<string, string>> formParameters)
@@ -255,7 +255,7 @@ namespace DFC.Composite.Shell.Services.Application
             if (taskHelper.TaskCompletedSuccessfully(task))
             {
                 var taskResult = task.Result;
-                var result = contentProcessorService.Process(taskResult, RequestBaseUrl, application.RootUrl);
+                var result = contentProcessorService.Process(taskResult, RequestBaseUrl, application.RootUrl, application.Path.Path);
                 outputHtmlMarkup = result;
             }
             else
